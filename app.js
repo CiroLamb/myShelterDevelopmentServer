@@ -64,15 +64,9 @@ let generateToken = "";
 app.get("/element_status/:id/:token", (req, res) => {
   const { id, token: EncryptedToken } = req.params;
 
-  // console.log(token);
-  // TODO: reverse the md5
-  // TODO: get the password
-  // TODO: look for the password to be correct
-  // console.log(EncryptedToken);
-  // console.log(md5(token + PASSWORD));
-  // FIXME: DO SOMETHING HERE
-
   if (md5(generateToken + PASSWORD) === EncryptedToken) {
+    const elements = getElementById(id);
+    console.log(elements);
     res.status(200).json({
       elements: getElementById(id),
     });
